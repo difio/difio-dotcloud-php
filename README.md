@@ -15,6 +15,7 @@ Installing on your dotCloud PHP application
         ...
           requirements:
               - HTTP_Request2-2.0.0
+              - PEAR
         ...
 
 - Download the registration script into your application
