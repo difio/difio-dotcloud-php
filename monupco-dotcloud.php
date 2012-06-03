@@ -27,7 +27,7 @@
 ************************************************************************************/
 
 $NAME = "monupco-dotcloud-php";
-$VERSION = "0.1";
+$VERSION = "0.2";
 
 /****
  Dependencies:
@@ -57,12 +57,8 @@ $data = array(
     'installed'  => array(),
 );
 
-
-set_include_path(get_include_path() . PATH_SEPARATOR . "/home/dotcloud/php-env/share/php");
-
 require_once 'PEAR/Registry.php';
 require_once 'HTTP/Request2.php';
-
 
 $registry = new PEAR_Registry("/home/dotcloud/php-env/share/php");
 foreach ($registry->packageInfo(null, null) as $package) {
@@ -79,7 +75,7 @@ $request = new HTTP_Request2('https://monupco-otb.rhcloud.com/application/regist
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setHeader('User-agent', sprintf('%s/%s', $NAME, $VERSION));
 $request->addPostParameter('json_data', $json_data);
-// $request->setConfig('ssl_verify_peer', false);  // another bug in OpenShift
+$request->setConfig('ssl_verify_peer', false);  // another bug in OpenShift
 
 $response = $request->send();
 
