@@ -8,7 +8,7 @@ Installing on your dotCloud PHP application
 
 - Create an account at http://monupco.com
 
-- Create your PHP application in dotCloud
+- Create your PHP application and push it to dotCloud
 
 - Add required dependencies in `dotcloud.yml`
 
