@@ -27,7 +27,7 @@
 ************************************************************************************/
 
 $NAME = "monupco-dotcloud-php";
-$VERSION = "0.3";
+$VERSION = "0.4";
 
 /****
  Dependencies:
@@ -49,7 +49,7 @@ $env = json_decode($senv);
 $data = array(
     'user_id'    => intval($env->MONUPCO_USER_ID),
     'app_name'   => $env->DOTCLOUD_PROJECT.'.'.$env->DOTCLOUD_SERVICE_NAME,
-    'app_uuid'   => $env->DOTCLOUD_WWW_HTTP_HOST,
+    'app_uuid'   => $env->MONUPCO_UUID,
     'app_type'   => 'PHP',
     'app_url'    => $env->DOTCLOUD_WWW_HTTP_URL,
     'app_vendor' => 1,   // dotCloud
