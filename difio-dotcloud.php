@@ -26,8 +26,8 @@
 *
 ************************************************************************************/
 
-$NAME = "monupco-dotcloud-php";
-$VERSION = "0.4";
+$NAME = "difio-dotcloud-php";
+$VERSION = "2.0";
 
 /****
  Dependencies:
@@ -47,9 +47,9 @@ $senv = file_get_contents('/home/dotcloud/environment.json');
 $env = json_decode($senv);
 
 $data = array(
-    'user_id'    => intval($env->MONUPCO_USER_ID),
+    'user_id'    => intval($env->DIFIO_USER_ID),
     'app_name'   => $env->DOTCLOUD_PROJECT.'.'.$env->DOTCLOUD_SERVICE_NAME,
-    'app_uuid'   => $env->MONUPCO_UUID,
+    'app_uuid'   => $env->DIFIO_UUID,
     'app_type'   => 'PHP',
     'app_url'    => $env->DOTCLOUD_WWW_HTTP_URL,
     'app_vendor' => 1,   // dotCloud
@@ -67,11 +67,11 @@ foreach ($registry->packageInfo(null, null) as $package) {
 
 // Add self as installed so that user is able to see when new version is available
 // this is of type 2000 - package released on GitHub which has tags
-$data['installed'][] = array('n' => 'monupco/'.$NAME, 'v' => $VERSION, 't' => 2000);
+$data['installed'][] = array('n' => 'difio/'.$NAME, 'v' => $VERSION, 't' => 2000);
 
 $json_data = json_encode($data);
 
-$request = new HTTP_Request2('https://monupco-otb.rhcloud.com/application/register/');
+$request = new HTTP_Request2('https://difio-otb.rhcloud.com/application/register/');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setHeader('User-agent', sprintf('%s/%s', $NAME, $VERSION));
 $request->addPostParameter('json_data', $json_data);
