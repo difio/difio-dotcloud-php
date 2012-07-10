@@ -10,6 +10,14 @@ Installing on your dotCloud PHP application
 
 - Create your PHP application and push it to dotCloud
 
+- Configure your Difio userID. You can get it from https://difio-otb.rhcloud.com/profiles/mine/.
+
+        dotcloud var set <app name> DIFIO_USER_ID=UserID
+
+- Generate a unique identifier for this application and save the value as environmental variable.
+
+        dotcloud var set <app name> DIFIO_UUID=`uuidgen`
+
 - Add required dependencies in `dotcloud.yml`
 
         ...
@@ -44,13 +52,6 @@ If a file named `postinstall` doesn't already exist, create it and add the follo
         git add .
         git commit -m "enable Difio registration"
 
-- Configure your Difio userID. You can get it from https://difio-otb.rhcloud.com/profiles/mine/.
-
-        dotcloud var set <app name> DIFIO_USER_ID=UserID
-
-- Generate a unique identifier for this application and save the value as environmental variable.
-
-        dotcloud var set <app name> DIFIO_UUID=`uuidgen`
 
 - Then push your application to dotCloud
 
