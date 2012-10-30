@@ -4,7 +4,7 @@
 
 /************************************************************************************
 *
-* Copyright (c) 2012, Alexander Todorov <atodorov()otb.bg>
+* Copyright (c) 2012, Alexander Todorov <atodorov()dif.io>
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@
 ************************************************************************************/
 
 $NAME = "difio-dotcloud-php";
-$VERSION = "2.0";
+$VERSION = "2.1";
 
 /****
  Dependencies:
@@ -44,14 +44,14 @@ function startsWith($haystack,$needle) {
 
 
 $senv = file_get_contents('/home/dotcloud/environment.json');
-$env = json_decode($senv);
+$env = json_decode($senv, true);
 
 $data = array(
-    'user_id'    => intval($env->DIFIO_USER_ID),
-    'app_name'   => $env->DOTCLOUD_PROJECT.'.'.$env->DOTCLOUD_SERVICE_NAME,
-    'app_uuid'   => $env->DIFIO_UUID,
-    'app_type'   => 'PHP',
-    'app_url'    => $env->DOTCLOUD_WWW_HTTP_URL,
+    'user_id'    => intval($env['DIFIO_USER_ID']),
+    'app_name'   => $env['DOTCLOUD_PROJECT'].'.'.$env['DOTCLOUD_SERVICE_NAME'],
+    'app_uuid'   => $env['DIFIO_UUID'],
+    'app_type'   => 'php',
+    'app_url'    => $env['DOTCLOUD_'.strtoupper($env['DOTCLOUD_SERVICE_NAME']).'_HTTP_URL'],
     'app_vendor' => 1,   // dotCloud
     'pkg_type'   => 500, // PHP PEAR
     'installed'  => array(),
